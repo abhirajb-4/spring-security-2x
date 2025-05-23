@@ -1,5 +1,6 @@
 package com.ust.security2x.controller;
 
+import com.ust.security2x.dto.LoginDto;
 import com.ust.security2x.model.User;
 import com.ust.security2x.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,11 @@ public class UserController {
     @GetMapping("/user")
     public List<User> getAllUsers(){
         return userService.getAllUsers();
+    }
+
+    @PostMapping("/user/login")
+    public String userLogin(@RequestBody LoginDto loginDto) {
+        String loginMsg = userService.userLogin(loginDto.username(),loginDto.password());
+        return loginMsg;
     }
 }
