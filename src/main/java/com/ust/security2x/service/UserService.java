@@ -34,6 +34,10 @@ public class UserService implements UserDetailsService {
 
     public String addUser(User user) {
         try {
+            Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
+            if(existingUser.isPresent()){
+                return "User already Exists";
+            }
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(user);
             return "User saved";

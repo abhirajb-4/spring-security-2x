@@ -1,0 +1,16 @@
+USER REGISTER
+localhost:8085/userreg
+
+{
+    "username":"kiran",
+    "fullname":"Kiraaan",
+    "password":"1234",
+    "role":"ROLE_USER"
+}
+
+USER LOGIN
+localhost:8085/login
+{
+    "username": "kiran",
+    "password": "1234"
+}

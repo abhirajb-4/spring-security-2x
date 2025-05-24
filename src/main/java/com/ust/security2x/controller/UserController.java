@@ -21,19 +21,28 @@ public class UserController {
     @Autowired
     private final UserService userService;
 
-    @PostMapping("/user")
+    @PostMapping("/userreg")
     public ResponseEntity<String> addUser(@RequestBody User user){
         String msg = userService.addUser(user);
         return new ResponseEntity<>(msg, HttpStatus.CREATED);
     }
-    @GetMapping("/user")
+    @GetMapping("/allusers")
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
 
-    @PostMapping("/user/login")
+    @PostMapping("/login")
     public String userLogin(@RequestBody LoginDto loginDto) {
-        String loginMsg = userService.userLogin(loginDto.username(),loginDto.password());
-        return loginMsg;
+        return userService.userLogin(loginDto.username(),loginDto.password());
     }
+    @GetMapping("/admin")
+    public String adminHome(){
+        return "Hello Admin";
+    }
+
+    @GetMapping("/user")
+    public String userHome(){
+        return "Hello User";
+    }
+
 }
